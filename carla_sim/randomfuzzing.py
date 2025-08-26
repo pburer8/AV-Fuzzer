@@ -143,7 +143,7 @@ def main(spawn_config, weather_params):
                 npc_speed = math.sqrt(npc_vel.x ** 2 + npc_vel.y ** 2 + npc_vel.z ** 2)
 
                 # 判断责任
-                fault = liability.is_ego_fault(ev, npc)
+                fault = liability.is_ego_fault(ev, npc)[0]
                 collision_occurred = True
 
                 print(f" EV at ({ev_loc.x:.2f}, {ev_loc.y:.2f}) yaw={ev_rot.yaw:.1f} speed={ev_speed:.2f} m/s")

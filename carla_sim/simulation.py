@@ -79,7 +79,7 @@ def run_simulation(spawn_config, weather_params,
 
     collision_bp = blueprint_library.find('sensor.other.collision')
     collision_sensor = world.spawn_actor(collision_bp, carla.Transform(), attach_to=vehicle)
-    isHit = False; isEgoFault = False; hitTime = None
+    isHit = False; isEgoFault = (False, "none"); hitTime = None
     def on_collision(event):
         nonlocal isHit, isEgoFault, hitTime
         if isHit:
@@ -175,7 +175,7 @@ def evaluate_individual(spawn_config, weather_params, individual,
     fitness = tools.find_fitness(
         result.deltaDlist,
         result.dList,
-        result.isEgoFault,
+        result.isEgoFault[0],
         result.isHit,
         result.hitTime
     )
